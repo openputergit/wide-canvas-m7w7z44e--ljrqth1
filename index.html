@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhishGuard AI - Cyberpunk Edition</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<style>
+    body { 
+        font-family: 'Share Tech Mono', monospace;
+        background-color: #0a0a16;
+        color: #00ff9d;
+    }
+    .cyber-gradient {
+        background: linear-gradient(135deg, #1a0f3c 0%, #2a1654 100%);
+    }
+    .cyber-glow {
+        text-shadow: 0 0 10px #00ff9d, 0 0 20px #00ff9d, 0 0 30px #00ff9d;
+    }
+    .neon-border {
+        border: 2px solid #00ff9d;
+        box-shadow: 0 0 10px #00ff9d;
+    }
+    .cyber-input {
+        background: rgba(10, 10, 22, 0.8);
+        border: 1px solid #00ff9d;
+        caret-color: #00ff9d;
+    }
+    .cyber-button {
+        background: linear-gradient(45deg, #ff00ff, #00ff9d);
+        transition: all 0.3s ease;
+    }
+    .cyber-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 20px rgba(0, 255, 157, 0.5);
+    }
+    .matrix-bg {
+        background-color: rgba(0, 255, 157, 0.05);
+    }
+    .cyber-card {
+        backdrop-filter: blur(10px);
+        background: rgba(26, 15, 60, 0.7);
+        border: 1px solid #00ff9d;
+    }
+    .glitch-effect {
+        animation: glitch 1s infinite;
+    }
+    @keyframes glitch {
+        0% { transform: translate(0); }
+        20% { transform: translate(-2px, 2px); }
+        40% { transform: translate(-2px, -2px); }
+        60% { transform: translate(2px, 2px); }
+        80% { transform: translate(2px, -2px); }
+        100% { transform: translate(0); }
+    }
+    #matrix-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+</style>
+<body>
+    <canvas id="matrix-canvas"></canvas>
+
+    <nav class="cyber-gradient text-[#00ff9d] p-4 neon-border">
+        <div class="container mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <i class="bi bi-shield-check text-2xl cyber-glow"></i>
+                <span class="text-xl font-bold font-['Orbitron']">PhishGuard_AI</span>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#" class="hover:cyber-glow">Terminal</a>
+                <a href="#" class="hover:cyber-glow">Neural_Docs</a>
+                <a href="#" class="hover:cyber-glow">NetShield_v2.0</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-['Orbitron'] font-bold mb-4 cyber-glow">NEURAL URL SCANNER v2.0</h1>
+            <p class="text-[#00ff9d] max-w-2xl mx-auto opacity-80">
+                [SYSTEM]: Quantum AI-driven defense matrix activated. Ready to analyze potential threats.
+            </p>
+        </div>
+
+        <div class="max-w-3xl mx-auto cyber-card rounded-xl p-6 mb-8">
+            <div class="flex flex-col md:flex-row gap-4">
+                <input type="url" id="urlInput" 
+                    class="flex-1 px-4 py-2 rounded-lg cyber-input text-[#00ff9d] focus:ring-2 focus:ring-[#00ff9d]"
+                    placeholder="INSERT_TARGET_URL >>">
+                <button onclick="analyzeURL()" 
+                    class="cyber-button text-white px-6 py-2 rounded-lg font-['Orbitron']">
+                    SCAN_NOW
+                </button>
+            </div>
+
+            <!-- Rest of your existing structure with cyberpunk classes -->
+            <!-- ... -->
+        </div>
+    </main>
+
+    <script>
+        // Matrix Rain Effect
+        const canvas = document.getElementById('matrix-canvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%";
+        const drops = [];
+        const fontSize = 14;
+        const columns = canvas.width/fontSize;
+
+        for(let x = 0; x < columns; x++) {
+            drops[x] = 1;
+        }
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = '#0F0';
+            ctx.font = fontSize + 'px monospace';
+
+            for(let i = 0; i < drops.length; i++) {
+                const text = matrix[Math.floor(Math.random()*matrix.length)];
+                ctx.fillText(text, i*fontSize, drops[i]*fontSize);
+                
+                if(drops[i]*fontSize > canvas.height && Math.random() > 0.975)
+                    drops[i] = 0;
+                
+                drops[i]++;
+            }
+        }
+
+        setInterval(drawMatrix, 35);
+
+        // Your existing JavaScript with cyberpunk themed notifications
+        // ... rest of your JavaScript code ...
+    </script>
+<script>document.body.addEventListener('wheel', e => { if (!e.ctrlKey) return; e.preventDefault(); return }, { passive: false })</script>
+	</body>
+</html>
